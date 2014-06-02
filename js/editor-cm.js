@@ -86,8 +86,12 @@ function EditorCodeMirror(editorElement, settings) {
             cmAutoComplete(cm, true);
         }, 100);
     });
+
+    var LastToken = null; //assigned on cursor activity
+
     //required for tooltips in tern
-    this.cm_.on("cursorActivity", function (cm) {               
+    this.cm_.on("cursorActivity", function (cm) {
+        LastToken = cm.getTokenAt(cm.getCursor());
         server.updateArgHints(cm);
     });
 
@@ -95,6 +99,84 @@ function EditorCodeMirror(editorElement, settings) {
     window.server = new CodeMirror.TernServer({       
         useWorker: true
     });
+
+    CreateContextMenu();    
+    //Create custom context menu for CM. NTOE: need to remove references from global editor var
+    function CreateContextMenu() {
+        $.contextMenu({
+            selector: 'pre', 
+            build: function ($trigger, e) {
+                // this callback is executed every time the menu is to be shown
+                var cb = function (key, options) {
+                    var cm = editor; //because commands below are copied from hotkeys which have 'cm' as editor as local var
+                    if (key == "Expand") {
+                        editor.unfoldSelection();
+                    }
+                    else if (key == "Collapse") {
+                        editor.foldSelection();
+                    }
+                    else if (key == "Format") {
+                        cm.autoFormatRange(cm.getCursor(true), cm.getCursor(false));
+                    }
+                    else if (key == "JumpToDefinition") {
+                        server.jumpToDef(cm);
+                    }
+                    else if (key == "JumpBack") {
+                        server.jumpBack(cm);
+                    }
+                    else if (key == "Rename") {
+                        server.rename(cm);
+                    }
+                    else if (key == "ShowType") {
+                        server.showType(cm);
+                    }
+                    //LastToken
+                    //editor.getModeAt(editor.getCursor()).name -- get name of mode at current cursor pos of right click
+                };
+                var texSelected = (editor.getSelection() !== "") ? true : false;
+                var menuItems = {
+                    "Expand": {
+                        name: "Expand"
+                    },
+                    "Collapse": {
+                        name: "Collapse"
+                    }
+                };
+                if (texSelected) {
+                    jQuery.extend(menuItems, {
+                        "sep1": "---------",
+                        "Format": {
+                            name: "Format"
+                        }
+                    });
+                }
+                //add per mode items (comeback- make show type only work based on current token)
+                if (editor.getModeAt(editor.getCursor()).name == "javascript" && !texSelected && LastToken.type !== "null" && LastToken.type !== "string" && LastToken.type !== "comment") {
+                    jQuery.extend(menuItems, {
+                        "sep2": "---------",
+                        "JumpToDefinition": {
+                            name: "Jump To Definition (Alt+.)"
+                        },
+                        "JumpBack": {
+                            name: "Jump Back (Alt+,)"
+                        },
+                        "Rename": {
+                            name: "Rename (Ctrl+Q)"
+                        },
+                        "ShowType": {
+                            name: "Show Type (Ctrl+I)"
+                        }
+                    });
+
+                }
+                return {
+                    callback: cb,
+                    items: menuItems
+                };
+            }
+        });
+    }
+
 }
 
 

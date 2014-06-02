@@ -3,7 +3,7 @@
 A code editor as a Chrome App. Built on top of [text-app](https://github.com/GoogleChrome/text-app)
 
 ## Current Status
- - Just getting started... Not ready for end users yet
+ - Beta, needs a lot of work still
 
 ## Features
  - Supports many languages (including non-web languages) (using [CodeMirror][1])
@@ -13,10 +13,9 @@ A code editor as a Chrome App. Built on top of [text-app](https://github.com/Goo
     - Javascript only: Intelligent auto complete (like Visual Studio Intellisense, using [tern][3]) 
     - Javascript only: error detection (using [JSHint][4])
     
-## ToDo
+## To Do
  - Add Code Tree for Javscript (using tern's abstract sytanx tree)
  - Add detailed context menu and operations similiar to NotePad++
- - Add CSS Lint
  - Figure out how to make tern work for only one file at a time, and how to make it optionally provide hints for all open files
  - Add ability to open entire folders and save a project file (and later read the project file)
 

@@ -7,3 +7,12 @@
 [submodule "lib/js-beautify"]
 	path = lib/js-beautify
 	url = git://github.com/einars/js-beautify.git
+[submodule "lib/tern"]
+	path = lib/tern
+	url = https://github.com/marijnh/tern.git
+[submodule "lib/jshint"]
+	path = lib/jshint
+	url = https://github.com/jshint/jshint.git
+[submodule "lib/csslint"]
+	path = lib/csslint
+	url = https://github.com/CSSLint/csslint.git

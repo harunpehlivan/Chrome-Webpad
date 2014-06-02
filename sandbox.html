@@ -6,36 +6,34 @@
 <head>
     <title>Sandbox</title>    
     <script src="lib/CodeMirror/lib/codemirror.js" type="text/javascript"></script>
-    <script src="lib/tern-insecure.js"></script>
-    <script src="lib/tern-worker.js"></script>
-    <script src="lib/CodeMirror/ternManual/acorn.js"></script>
-    <script src="lib/CodeMirror/ternManual/acorn_loose.js"></script>
-    <script src="lib/CodeMirror/ternManual/walk.js"></script>
-    <script src="lib/CodeMirror/ternManual/polyfill.js"></script>
-    <script src="lib/CodeMirror/ternManual/signal.js"></script>
+
+    <script src="lib/CodeMirror_Custom/addon/tern/tern-insecure.js"></script>
+    <script src="lib/CodeMirror_Custom/addon/tern/worker.js"></script>
+    
+    <script src="lib/acorn/acorn.js"></script>
+    <script src="lib/acorn/acorn_loose.js"></script>
+    <script src="lib/acorn/util/walk.js"></script>
+
+    <script src="lib/tern/lib/signal.js"></script>
+    <script src="lib/tern_Custom/lib/tern.js"></script>
+    <script src="lib/tern/lib/def.js"></script>
+    <script src="lib/tern/lib/comment.js"></script>
+    <script src="lib/tern/lib/infer.js"></script>
+
+    <script src="lib/tern/plugin/doc_comment.js"></script>
+
+    <!--<script src="lib/CodeMirror/ternManual/polyfill.js"></script>-->
+
+
+  <!--  <script src="lib/CodeMirror/ternManual/signal.js"></script>
     <script src="lib/CodeMirror/ternManual/tern.js"></script>
     <script src="lib/CodeMirror/ternManual/def.js"></script>
     <script src="lib/CodeMirror/ternManual/comment.js"></script>
     <script src="lib/CodeMirror/ternManual/infer.js"></script>
     <script src="lib/CodeMirror/ternManual/doc_comment.js"></script>
+      -->
     
 </head>
-<body>
-    <script>
-      /*  // Set up message event handler:
-        window.addEventListener('message', function (event) {
-            console.log(event);
-            var message = event.data.message;//this can be a json object
-            var type = event.data.type;
-            //var result = 'invalid request';
-
-            var result = {};
-            result.message = message;
-            result.type = type;
-            result.other = "hello from sandbox";
-          
-            event.source.postMessage(result , event.origin);
-        });*/
-    </script>
+<body>    
 </body>
 </html>

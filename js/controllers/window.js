@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-function WindowController(editor, settings, analytics) {
+function WindowController(editor, settings, analytics) {   
   this.editor_ = editor;
   this.settings_ = settings;
   this.analytics_ = analytics;

@@ -12,15 +12,16 @@
     <link rel="stylesheet" href="lib/CodeMirror/addon/tern/tern.css">
     <link rel="stylesheet" href="lib/CodeMirror/addon/fold/foldgutter.css" />
     <link rel="stylesheet" href="lib/CodeMirror/addon/display/fullscreen.css">
-    <link rel="stylesheet" href="lib/CodeMirror/addon/lint/lint.css">    
-    <link rel="stylesheet" href="lib/jstree/style.min.css">       
+    <link rel="stylesheet" href="lib/CodeMirror/addon/lint/lint.css">
+    <link rel="stylesheet" href="lib/jstree/style.min.css">
 
-    <style>     
+    <style>
         .CodeMirror-focused .cm-matchhighlight {
             background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFklEQVQI12NgYGBgkKzc8x9CMDAwAAAmhwSbidEoSQAAAABJRU5ErkJggg==);
             background-position: bottom;
             background-repeat: repeat-x;
         }
+
         .cm-trailingspace {
             background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QUXCToH00Y1UgAAACFJREFUCNdjPMDBUc/AwNDAAAFMTAwMDA0OP34wQgX/AQBYgwYEx4f9lQAAAABJRU5ErkJggg==);
             background-position: bottom left;
@@ -33,7 +34,7 @@
         <div id="sidebar">
             <div id="sidebar-resizer"></div>
             <div id="file-tabs-menu">
-                <h1>Webpad</h1>                           
+                <h1>Webpad</h1>
 
                 <ul id="file-menu">
                     <li id="file-menu-new"><div i18n-content="fileMenuNew"></div></li>
@@ -86,14 +87,14 @@
                             <input type="checkbox" id="setting-smartindent">
                         </li>
                         <!--        <li>
-                                      <label for="setting-margin">Right margin</label>
-                                      <input type="checkbox" id="setting-margin">
-                                    </li>
-                                    <li>
-                                      <label for="setting-margincol">Margin column</label>
-                                      <input type="text" id="setting-margincol" size="1" maxlength="3"
-                                             pattern="\d+" value="80">
-                                    </li>  -->
+              <label for="setting-margin">Right margin</label>
+              <input type="checkbox" id="setting-margin">
+            </li>
+            <li>
+              <label for="setting-margincol">Margin column</label>
+              <input type="text" id="setting-margincol" size="1" maxlength="3"
+                     pattern="\d+" value="80">
+            </li>  -->
                         <li>
                             <label for="setting-theme" i18n-content="themeSetting"></label>
                             <select name="setting-theme" id="setting-theme">
@@ -113,6 +114,53 @@
                             <input type="checkbox" id="setting-alwaysontop">
                         </li>
                     </ul>
+                </div>
+                <div style="padding:30px 0px 30px 10px">
+                    <h1 style="padding-left:0px;">Hotkeys</h1>
+                    <style>
+                        .tdr {
+                            text-align: right;
+                            color:yellow;
+                            padding-right:5px;
+                        }
+                    </style>
+                    <table style="font-size:12px; width:100%;">
+                        <tr>
+                            <td>Fold all or selection</td>
+                            <td class="tdr">Al+0</td>
+                        </tr>
+                        <tr>
+                            <td>Unfold all or selection</td>
+                            <td class="tdr">Al+Shift+0</td>
+                        </tr>
+                        <tr>
+                            <td>Auto complete</td>
+                            <td class="tdr">Ctrl+Space</td>
+                        </tr>
+                        <tr>
+                            <td>Auto indent selection</td>
+                            <td class="tdr">Ctrl+K</td>
+                        </tr>
+                        <tr>
+                            <td title="shows type of member that is currently in cursor">*Show type</td>
+                            <td class="tdr">Ctrl+I</td>
+                        </tr>
+                        <tr>
+                            <td title="jump to definition of member">*Jump to definition</td>
+                            <td class="tdr">Alt+.</td>
+                        </tr>
+                        <tr>
+                            <td title="jump back after jumping to a definition">*Jump back</td>
+                            <td class="tdr">Alt+.</td>
+                        </tr>
+                        <tr>
+                            <td title="rename a member and its references (experimental!)">*Rename member</td>
+                            <td class="tdr">Ctrl+Q</td>
+                        </tr>                        
+                    </table>
+                    <div style="padding-top:10px; font-style:italic; font-size:12px; color:grey;">
+                        * Javascript mode only
+                    </div>
                 </div>
                 <hr>
                 <ul class="settings-switch-ul">

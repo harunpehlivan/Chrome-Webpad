@@ -84,7 +84,11 @@ function EditorCodeMirror(editorElement, settings) {
         clearTimeout(debounce);
         if (!cm.state.completionActive) debounce = setTimeout(function () {
             cmAutoComplete(cm, true);
-        }, 50);
+        }, 100);
+    });
+    //required for tooltips in tern
+    this.cm_.on("cursorActivity", function (cm) {               
+        server.updateArgHints(cm);
     });
 
     //testing tern....

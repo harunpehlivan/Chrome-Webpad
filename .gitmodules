@@ -6,4 +6,4 @@
 	url = https://github.com/GoogleChrome/chrome-platform-analytics.git
 [submodule "lib/js-beautify"]
 	path = lib/js-beautify
-	url = https://github.com/einars/js-beautify.git
+	url = git://github.com/einars/js-beautify.git

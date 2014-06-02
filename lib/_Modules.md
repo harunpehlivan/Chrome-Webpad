@@ -1,6 +1,6 @@
 ## Usage
  - Files for sub modules are copied and irrelevant files are deleted
- - Intentionally not using GIT submodules as its slow as irritating
+ - Intentionally not using GIT submodules as its slow and irritating
  - Any modifications to modules are made as a copy in a separate folder named [module]_Custom and the folder structure remains the same
  
 ## Module List
@@ -28,4 +28,6 @@
  - jstree
      - 2.1.1
      - https://github.com/vakata/jstree
-     
+ - jsonlint
+     - 1.6.0
+     - https://github.com/zaach/jsonlint

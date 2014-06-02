@@ -23,7 +23,7 @@ function EditorCodeMirror(editorElement, settings) {
             foldGutter: true,
             gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
             styleActiveLine: true,
-            autoCloseTags: true,
+            autoCloseTags: false,
             scrollPastEnd: true,
             dragDrop: false,
             autoCloseBrackets: true,
@@ -62,7 +62,7 @@ function EditorCodeMirror(editorElement, settings) {
                 "Ctrl-L": function (cm) {
                     //cm.goToLine();
                     console.log('need to implement this');
-                }
+                }                
             },
         });
     this.cm_.setSize(null, 'auto');
@@ -77,17 +77,18 @@ function EditorCodeMirror(editorElement, settings) {
     //this.cm_.on('swapDoc', function () { log('swapdoc'); });
     this.cm_.on('swapDoc', this.onSwapDoc.bind(this));
 
+
+    //https://groups.google.com/forum/#!searchin/codemirror/autocomplete/codemirror/QPRoe05BNxM/VpZqon5E5W4J
+    var debounce;
+    this.cm_.on("inputRead", function (cm) {
+        clearTimeout(debounce);
+        if (!cm.state.completionActive) debounce = setTimeout(function () {
+            cmAutoComplete(cm, true);
+        }, 50);
+    });
+
     //testing tern....
-    window.server = new CodeMirror.TernServer({
-        //defs: defs,
-        //plugins: { requirejs: {}, doc_comment: true },
-        //switchToDoc: function (name) { selectDoc(docID(name)); },
-        //NOTE: below does not appear to be screwuping up because useWorker=false
-       /* workerDeps: ["../../ternManual/acorn.js", "../../ternManual/acorn_loose.js",
-                     "../../ternManual/walk.js", "../../ternManual/signal.js", "../../ternManual/tern.js",
-                     "../../ternManual/def.js", "../../ternManual/infer.js", "../../ternManual/comment.js",
-                      "../../ternManual/doc_comment.js"],
-        workerScript: "addon/tern/worker.js",*/
+    window.server = new CodeMirror.TernServer({       
         useWorker: true
     });
 }
@@ -171,6 +172,10 @@ EditorCodeMirror.prototype.autoSetModeAddOns = function () {
     else if (mode == 'css') {
         this.cm_.setOption('lint', CodeMirror.lint.css)
         DBG += '; --- turning on css lint';
+    }
+    else if (mode == 'yaml') {
+        this.cm_.setOption('lint', CodeMirror.lint.json)
+        DBG += '; --- turning on json lint';
     }
     else {
         this.cm_.setOption('lint', '')

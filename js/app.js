@@ -29,6 +29,7 @@ TextApp.prototype.init = function () {
     td += '\n -' + '     ' + ' TERN IS WORKING! add proper functions and hotkeys (and fix error being thrown by a logO existing somewhere)';
     td += '\n -' + '     ' + ' start by making tern work per file (keep it simple)';
     td += '\n -' + '     ' + ' add tern plugins and defs (need to turn script files to json to add defs in startServer)';
+    td += '\n -' + '     ' + ' terns tooltips on parameters are not working...';
     td += '\n -' + 'add serach/replace';
     console.log(td);
     

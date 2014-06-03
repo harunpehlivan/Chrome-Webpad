@@ -2,7 +2,7 @@
     "name": "Webpad",
     "description": "__MSG_appDesc__",
     "default_locale": "en",
-    "version": "0.43",
+    "version": "0.44",
     "icons": {
         "16": "icon/16x16.png",
         "32": "icon/32x32.png",

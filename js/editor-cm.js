@@ -90,9 +90,23 @@ function EditorCodeMirror(editorElement, settings) {
     var LastToken = null; //assigned on cursor activity
 
     //required for tooltips in tern
+    var debounce_cursorActivity;
     this.cm_.on("cursorActivity", function (cm) {
         LastToken = cm.getTokenAt(cm.getCursor());
         server.updateArgHints(cm);
+        //custom method that will show type info on click of function name
+        var state = cm.getTokenAt(cm.getCursor()).state;
+        var inner = CodeMirror.innerMode(cm.getMode(), state);
+        if (inner.mode.name != "javascript") return;
+        var lex = inner.state.lexical;
+        if (lex.type != "stat") {//stat = call function
+            return;
+        }
+        //below shows type when cursor lands on a function
+        clearTimeout(debounce_cursorActivity);
+        debounce_cursorActivity = setTimeout(function () {
+            server.showType(cm, null, true);
+        }, 100);
     });
 
     //testing tern....
@@ -100,7 +114,7 @@ function EditorCodeMirror(editorElement, settings) {
         useWorker: true
     });
 
-    CreateContextMenu();    
+    //CreateContextMenu();    //DISABLED AS IT NEEDS WORK TO MAKE IT NOT FULL OF ERRORS!
     //Create custom context menu for CM. NTOE: need to remove references from global editor var
     function CreateContextMenu() {
         $.contextMenu({

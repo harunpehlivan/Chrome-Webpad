@@ -1,6 +1,8 @@
 # Webpad (Chrome App)
 
 A code editor as a Chrome App. Built on top of [text-app](https://github.com/GoogleChrome/text-app)
+[Download in the Chrome Web Store](https://chrome.google.com/webstore/detail/webpad/nbjajjpleonofjhcholjhjakpdmgfgga)
+
 
 ## Current Status
  - Beta, needs a lot of work still

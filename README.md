@@ -4,10 +4,6 @@ A code editor as a Chrome App. Built on top of [text-app](https://github.com/Goo
 
 [Download in the Chrome Web Store](https://chrome.google.com/webstore/detail/webpad/nbjajjpleonofjhcholjhjakpdmgfgga)
 
-
-## Current Status
- - Beta, needs a lot of work still
-
 ## Features
  - Supports many languages (including non-web languages) (using [CodeMirror][1])
  - Advanced features for web files (xml, html, json, css, javascript)
@@ -20,6 +16,7 @@ A code editor as a Chrome App. Built on top of [text-app](https://github.com/Goo
  - Add Code Tree for Javscript (using tern's abstract sytanx tree)
  - Add detailed context menu and operations similiar to NotePad++
  - Figure out how to make tern work for only one file at a time, and how to make it optionally provide hints for all open files
+ - Make tern remove files when they are closed
  - Add ability to open entire folders and save a project file (and later read the project file)
 
     
